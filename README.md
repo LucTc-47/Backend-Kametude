@@ -1,6 +1,6 @@
-# Project Compass - Backend Architecture (Team of 12)
+# Project KamEtude - Backend Architecture (Team of 12)
 
-Cette architecture est optimisée pour votre équipe de 12 étudiants, répartis en binômes stratégiques.
+Cette architecture est optimisée pour notre équipe de 12 étudiants, répartis en binômes stratégiques.
 
 ## Répartition des Binômes
 
