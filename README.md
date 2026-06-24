@@ -1,6 +1,6 @@
-# Project Compass - Backend Architecture (Team of 12)
+# Project KamEtude - Backend Architecture (Team of 12)
 
-Cette architecture est optimisée pour votre équipe de 12 étudiants, répartis en binômes stratégiques.
+Cette architecture est optimisée pour notre équipe de 12 étudiants, répartis en binômes stratégiques.
 
 ## Répartition des Binômes
 
@@ -11,7 +11,7 @@ Cette architecture est optimisée pour votre équipe de 12 étudiants, répartis
 | **Binôme 3** | `catalog-service` | **Noel & Steve** | Gigs (paliers), Catégories, Recherche, Villes. |
 | **Binôme 4** | `request-service` | **Prisca & Melista** | Appels d'offres clients, Propositions étudiants. |
 | **Binôme 5** | `business-service` | **Elvira & Veronique** | Workflow Commandes (Orders), Délais, Livrables. |
-| **Binôme 6** | `payment-service` | **Luc (Toi) & Dilane** | Intégration Campay, Escrow, Portefeuille. |
+| **Binôme 6** | `payment-service` | **Luc & Dilane** | Intégration Campay, Escrow, Portefeuille. |
 | **Binôme 7** | `support-service` | **Derrick & Franckline** | Chat, Notifications, Dashboards Admin, Storage. |
 
 *(Note: Derrick et Franckline assurent la Gateway et le Support Service pour garantir la cohérence technique transverse)*
