@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: support-service
+  datasource:
+    url: jdbc:postgresql://localhost:5436/support_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8086
+
+eureka:
+  client:
+    enabled: false
+
+app:
+  storage:
+    location: storage
