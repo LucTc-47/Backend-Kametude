@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: kametud_catalog
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/catalog_db
+    username: postgres
+    password: 809145
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8083
+
+identity:
+  service:
+    base-url: http://localhost:8081
+    student-status-path: /api/students/{studentId}/status
+
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:5173
