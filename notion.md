@@ -20,6 +20,7 @@ Auteurs : Tiagno Foko Darwin & Meche Domkam Jeanne E.
 3. [Modèle et schéma de base de données](#3-modèle-et-schéma-de-base-de-données)
    - 3.1 [Table users (interne)](#31-table-users-interne)
    - 3.2 [Table profiles (compatible frontend)](#32-table-profiles-compatible-frontend)
+   - 3.3 [Commandes de création (PostgreSQL)](#33-commandes-de-création-postgresql)
 4. [Sécurité et flux d'authentification](#4-sécurité-et-flux-dauthentification)
    - 4.1 [Mécanisme JWT](#41-mécanisme-jwt)
    - 4.2 [Inscription — POST /api/auth/register](#42-inscription--post-apiauthregister)
@@ -141,7 +142,44 @@ Stocke les données de profil public, pensées pour rester compatibles avec le s
 | verified | BOOLEAN | DEFAULT false | Badge de vérification du profil |
 | created_at | TIMESTAMP | NOT NULL | Date de création (auto, @CreationTimestamp) |
 
----
+### 3.3 Commandes de création (PostgreSQL)
+
+```sql
+-- Activation de l'extension pour la génération d'UUID (si non déjà active)
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- Table users (interne)
+CREATE TABLE users (
+    id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email      VARCHAR(255) NOT NULL UNIQUE,
+    password   VARCHAR(255) NOT NULL,
+    role       VARCHAR(50)  NOT NULL
+);
+
+-- Table profiles (compatible frontend)
+CREATE TABLE profiles (
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id     UUID NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+    first_name  VARCHAR(255),
+    last_name   VARCHAR(255),
+    email       VARCHAR(255),
+    phone       VARCHAR(50),
+    avatar_url  VARCHAR(500),
+    bio         TEXT,
+    city        VARCHAR(255),
+    rating      FLOAT,
+    role        VARCHAR(50),
+    verified    BOOLEAN DEFAULT false,
+    created_at  TIMESTAMP NOT NULL DEFAULT now()
+);
+
+-- Table associée pour la collection skills (@ElementCollection côté JPA)
+CREATE TABLE profile_skills (
+    profile_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+    skill      VARCHAR(255) NOT NULL
+);
+```
+
 
 ## 4. Sécurité et flux d'authentification
 
