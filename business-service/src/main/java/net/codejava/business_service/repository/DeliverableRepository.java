@@ -1,0 +1,9 @@
+package net.codejava.business_service.repository;
+
+import net.codejava.business_service.entity.Deliverable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface DeliverableRepository extends JpaRepository<Deliverable, Long> {
+    List<Deliverable> findByOrderId(Long orderId);
+}
